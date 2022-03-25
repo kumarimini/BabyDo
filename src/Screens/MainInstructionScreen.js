@@ -10,23 +10,54 @@ import { TouchableOpacity } from "react-native";
 import * as Speech from "expo-speech";
 
 const dataArr = [
+
   {
-    Row: "1",
     Data: [
-      { name: "Alphabets", ScreenName: "Alphabets" },
-      { name: "Months", ScreenName: "Months" },
+      {
+        name: "Alphabets",
+        ScreenName: "Alphabets",
+        audio: "lets learn alphabets",
+        imgUrl: require("../../assets/abcd.png"),
+      },
+      {
+        name: "Months",
+        ScreenName: "Months",
+        audio: "lets learn months",
+        imgUrl: require("../../assets/monthspng.png"),
+      },
     ],
   },
   {
-    Row: "2",
     Data: [
-      { name: "The Days of the Week", ScreenName: "week" },
-      { name: "Fruits" },
+      {
+        name: "Week",
+        ScreenName: "week",
+        audio: "lets learn the days of the week",
+        imgUrl: require("../../assets/one-week.png"),
+      },
+      {
+        name: "Fruits",
+        ScreenName: "Fruit ",
+        audio: "lets learn fruits",
+        imgUrl: require("../../assets/apple.png"),
+      },
     ],
   },
   {
-    Row: "3",
-    Data: [{ name: "Vegetables" }, { name: "Months" }],
+    Data: [
+      {
+        name: "Vegetables",
+        ScreenName: "TextSave",
+        audio: "lets learn vegetables",
+        imgUrl: require("../../assets/vegetablepng1.png"),
+      },
+      {
+        name: "Pre Math",
+        ScreenName: " ",
+        audio: "lets learn pre maths",
+        imgUrl: require("../../assets/Symbols.png"),
+      },
+    ],
   },
 ];
 
@@ -39,7 +70,7 @@ export default function MainInstructionScreen({ navigation }) {
     <SafeAreaView
       style={{
         flex: 1,
-        margin: 15,
+        margin: 5,
         backgroundColor: "#1D263F",
       }}
     >
@@ -50,8 +81,8 @@ export default function MainInstructionScreen({ navigation }) {
           borderRadius: 5,
           fontWeight: "bold",
           textAlign: "center",
-          fontSize: 20,
-          color: "white",
+          fontSize: 25,
+          color: "yellow",
         }}
       >
         Home School
@@ -62,9 +93,10 @@ export default function MainInstructionScreen({ navigation }) {
           {elem.Data.map((item) => (
             <MainInstruction
               name={item.name}
-              //   audio={item.audio}
+              audio={item.audio}
               ScreenName={item.ScreenName}
               navigation={navigation}
+              imgUrl={item.imgUrl}
             />
           ))}
         </View>
@@ -73,9 +105,9 @@ export default function MainInstructionScreen({ navigation }) {
   );
 }
 
-const MainInstruction = ({ ScreenName, name, navigation }) => {
-  const handleVoice = (text) => {
-    Speech.speak("lets study" + text);
+const MainInstruction = ({ ScreenName, name, navigation, audio, imgUrl }) => {
+  const handleVoice = (audio) => {
+    Speech.speak(audio);
   };
   const Navigator = (ScreenName) => {
     navigation.navigate(ScreenName);
@@ -85,11 +117,20 @@ const MainInstruction = ({ ScreenName, name, navigation }) => {
       <TouchableOpacity
         style={style.box}
         onPress={() => {
-          handleVoice(ScreenName);
-          Navigator(ScreenName != undefined ? ScreenName : " ");
+          handleVoice(audio);
+          Navigator(ScreenName);
         }}
       >
         <Text style={style.text}>{name}</Text>
+        <ImageBackground
+          source={imgUrl}
+          style={{
+            height: 110,
+            width: 110,
+            alignSelf: "center",
+            marginBottom:10
+          }}
+        />
       </TouchableOpacity>
     </View>
   );
@@ -101,6 +142,16 @@ const style = StyleSheet.create({
     marginTop: 10,
     margin: 5,
     borderRadius: 50,
+    shadowColor: "black",
+    shadowOffset: {
+      width: 1,
+      height: 5,
+    },
+    shadowOpacity: 5,
+    shadowRadius: 4.65,
+
+    elevation: 10,
+    borderWidth: 2,
   },
   row: {
     flex: 2,

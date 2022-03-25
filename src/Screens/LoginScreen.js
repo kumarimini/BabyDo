@@ -24,7 +24,7 @@ class LoginScreen extends Component {
     const { navigation } = this.props;
     let reg = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w\w+)+$/;
     if (reg.test(this.state.username) && this.state.password.length > 8) {
-      navigation.navigate("instruction");
+      navigation.navigate("MainInstruction");
     } else {
       Alert.alert("please enter valid email & password");
     }

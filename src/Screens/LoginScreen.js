@@ -19,6 +19,10 @@ class LoginScreen extends Component {
       password: "sonyayadav",
     };
   }
+  navi(){
+    const { navigation } = this.props;
+    navigation.navigate("signup")
+  }
 
   _handlePress() {
     const { navigation } = this.props;
@@ -40,9 +44,10 @@ class LoginScreen extends Component {
         <Text
           style={{
             textAlign: "center",
-            fontSize: 40,
+            fontSize: 30,
             marginTop: 40,
             marginBottom: 20,
+            color:"white"
           }}
         >
           Login
@@ -74,6 +79,10 @@ class LoginScreen extends Component {
         >
           <Text style={style.loginText}>LOGIN</Text>
         </TouchableOpacity>
+        <TouchableOpacity
+        onPress={()=>this.navi()}>
+          <Text style={style.s_button}>Signup</Text>
+        </TouchableOpacity>
       </View>
     );
   }
@@ -83,7 +92,7 @@ export default LoginScreen;
 const style = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "white",
+    backgroundColor: "#1D263F",
   },
   image: {
     marginTop: 60,
@@ -107,6 +116,7 @@ const style = StyleSheet.create({
     height: 30,
     marginBottom: 30,
     margin: 20,
+    color:"white"
   },
   loginBtn: {
     width: "40%",
@@ -117,4 +127,11 @@ const style = StyleSheet.create({
     backgroundColor: "#d9d9d9",
     alignSelf: "center",
   },
+  s_button:{
+    height: 35,
+    marginBottom: 30,
+    margin: 20,
+    color:"white",
+    alignSelf:"center"
+  }
 });

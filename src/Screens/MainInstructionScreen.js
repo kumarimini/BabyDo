@@ -37,8 +37,8 @@ const dataArr = [
       },
       {
         name: "Fruits",
-        ScreenName: "Fruit ",
-        audio: "lets learn fruits",
+        ScreenName: "fruits",
+        audio: "lets learn Fruits",
         imgUrl: require("../../assets/apple.png"),
       },
     ],
@@ -47,15 +47,25 @@ const dataArr = [
     Data: [
       {
         name: "Vegetables",
-        ScreenName: "TextSave",
+        ScreenName: "Vegetables",
         audio: "lets learn vegetables",
         imgUrl: require("../../assets/vegetablepng1.png"),
       },
       {
-        name: "Pre Math",
-        ScreenName: " ",
-        audio: "lets learn pre maths",
-        imgUrl: require("../../assets/Symbols.png"),
+        name: "Birds",
+        ScreenName: "Bird",
+        audio: "lets learn Birds name",
+        imgUrl: require("../../assets/Birds.jpg"),
+      },
+    ],
+  },
+  {
+    Data: [
+      {
+        name: "Save Your Learning",
+        ScreenName: "TextSave",
+        audio: "lets Save Your Learnings",
+        imgUrl: require("../../assets/vegetablepng1.png"),
       },
     ],
   },
@@ -85,8 +95,7 @@ export default function MainInstructionScreen({ navigation }) {
           color: "yellow",
         }}
       >
-        Home School
-        {"\n"}(select what you want to learn)
+        BABYDO
       </Text>
       {dataArr.map((elem) => (
         <View style={ViewStyle}>
@@ -125,8 +134,8 @@ const MainInstruction = ({ ScreenName, name, navigation, audio, imgUrl }) => {
         <ImageBackground
           source={imgUrl}
           style={{
-            height: 110,
-            width: 110,
+            height: 50,
+            width: 50,
             alignSelf: "center",
             marginBottom:10
           }}

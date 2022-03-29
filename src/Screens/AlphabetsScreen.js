@@ -91,15 +91,16 @@ export default function AlphabetScreen() {
     >
       <Text
         style={{
-          color: "white",
-          textAlign: "center",
-          fontSize: 20,
-          padding: 10,
           backgroundColor: "grey",
-          borderRadius: 12,
+          borderWidth: 1,
+          borderRadius: 5,
+          fontWeight: "bold",
+          textAlign: "center",
+          fontSize: 25,
+          color: "yellow",
         }}
       >
-        Tap on buttons
+       ALPHABETS
       </Text>
 
       {dataArr.map((elem) => (
@@ -137,7 +138,7 @@ const style = StyleSheet.create({
     fontSize: 25,
   },
   btn: {
-    backgroundColor: "yellow",
+    backgroundColor: "white",
     flex: 1,
     padding: 10,
     borderRadius: 30,

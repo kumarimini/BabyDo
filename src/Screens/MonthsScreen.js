@@ -161,7 +161,7 @@ const style = StyleSheet.create({
   },
 
   btn: {
-    backgroundColor: "yellow",
+    backgroundColor: "white",
     flex: 1,
     padding: 5,
     borderRadius: 30,

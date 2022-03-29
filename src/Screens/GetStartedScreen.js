@@ -1,7 +1,6 @@
 import React from "react";
 import { StyleSheet, Text, View, Image, TouchableOpacity } from "react-native";
 import { ImageBackground } from "react-native";
-import LottieRenderer from "../utils/lottie/LottieRenderer";
 
 const GetStaredScreen = ({ navigation }) => {
   return (
@@ -13,15 +12,14 @@ const GetStaredScreen = ({ navigation }) => {
         },
       ]}
     >
-    <View style={{flex:5,height:450,width:'100%'}}>
-    {/* <LottieRenderer/> */}
-    <ImageBackground
-        style={{ height: "100%" }}
-        source={require("../../assets/Home.png")}
-      />
-    </View>
-      
-      <View style={{ flex: 1, backgroundColor: "#d9d9d9"}}>
+      <View style={{ flex: 5, height: 450, width: "100%" }}>
+        <ImageBackground
+          style={{ height: "100%" }}
+          source={require("../../assets/Home.png")}
+        />
+      </View>
+
+      <View style={{ flex: 1, backgroundColor: "#d9d9d9" }}>
         <View
           style={{
             height: 120,
@@ -29,25 +27,19 @@ const GetStaredScreen = ({ navigation }) => {
             margin: 20,
           }}
         >
-         
           <TouchableOpacity
             style={{
               height: 120,
               width: 140,
-              
-              // borderWidth: 1,
-              // borderRadius: 50,
             }}
-          onPress={()=>(navigation.navigate('login'))}>
+            onPress={() => navigation.navigate("signup")}
+          >
             <ImageBackground
               source={require("../../assets/source.gif")}
               style={{
                 height: 120,
                 width: 140,
-                // opacity: 0.6,
                 position: "absolute",
-                
-                
               }}
             />
             <View

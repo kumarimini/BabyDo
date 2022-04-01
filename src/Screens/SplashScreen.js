@@ -32,7 +32,7 @@ export default function SplashScreen({navigation}) {
         width: "100%",
         height: "100%",
       }}
-      source={require("../../assets/HomeSchool.png")}
+      source={require("../../assets/Babydo.png")}
     />
   );
 }

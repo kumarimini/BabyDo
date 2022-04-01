@@ -20,8 +20,8 @@ class LoginScreen extends Component {
     super(props);
 
     this.state = {
-      username: " ",
-      password: " ",
+      username: "sonya@gmail.com ",
+      password: "sonya ",
     };
   }
   navigation=this.props.navigation;

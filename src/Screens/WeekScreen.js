@@ -52,8 +52,8 @@ export default function AlphabetScreen() {
       style={{
         flexDirection: "column",
         flex: 1,
-        margin: 15,
         backgroundColor: "#1D263F",
+        marginTop:30
       }}
     >
       <Text

@@ -96,6 +96,7 @@ const style = StyleSheet.create({
     flex: 1,
     backgroundColor: "#1D263F",
     justifyContent: "center",
+    marginTop:30
   },
   textInput: {
     padding: 10,

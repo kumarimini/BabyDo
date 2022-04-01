@@ -15,10 +15,10 @@ export default function MonthsScreen() {
   };
   return (
     <SafeAreaView style={style.container}>
-      <View style={{ flex: 1, backgroundColor: "#d9d9d9",borderWidth:1,margin:15,borderRadius:10 }}>
+      <View style={{ flex: 1, backgroundColor: "grey",borderWidth:1,margin:15,borderRadius:10 }}>
         <Text
           style={{
-            color: "black",
+            color: "yellow",
             textAlign: "center",
             fontSize: 30,
             padding: 10,
@@ -151,6 +151,7 @@ const style = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: "#1D263F",
+    marginTop:30
   },
   text: {
     textAlign: "center",

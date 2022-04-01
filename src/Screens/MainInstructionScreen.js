@@ -65,7 +65,7 @@ const dataArr = [
         name: "Save Your Learning",
         ScreenName: "TextSave",
         audio: "lets Save Your Learnings",
-        imgUrl: require("../../assets/vegetablepng1.png"),
+        imgUrl: require("../../assets/books.png"),
       },
     ],
   },

@@ -85,8 +85,8 @@ export default function AlphabetScreen() {
       style={{
         flexDirection: "column",
         flex: 1,
-        margin: 15,
-        backgroundColor:'#1D263F'
+        backgroundColor: "#1D263F",
+        marginTop: 30,
       }}
     >
       <Text
@@ -100,7 +100,7 @@ export default function AlphabetScreen() {
           color: "yellow",
         }}
       >
-       ALPHABETS
+        ALPHABETS
       </Text>
 
       {dataArr.map((elem) => (
@@ -132,10 +132,10 @@ const AlphabetButton = ({ alphabet, textToSpeechMsg }) => {
 };
 
 const style = StyleSheet.create({
-  parentView:{
-    flex:1,
-    flexDirection:'row',
-    },
+  parentView: {
+    flex: 1,
+    flexDirection: "row",
+  },
   text: {
     textAlign: "center",
     margin: 10,
@@ -147,7 +147,7 @@ const style = StyleSheet.create({
     padding: 10,
     borderRadius: 30,
     margin: 3,
-    borderWidth:1,
+    borderWidth: 1,
     shadowColor: "black",
     shadowOffset: {
       width: 1,

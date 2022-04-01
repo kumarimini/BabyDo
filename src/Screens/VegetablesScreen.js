@@ -85,7 +85,7 @@ export default function VegetablesScreen({ navigation }) {
     <SafeAreaView
       style={{
         flex: 1,
-        margin: 5,
+        marginTop:30,
         backgroundColor: "#1D263F",
       }}
     >

@@ -9,9 +9,9 @@ const dataArr = [
     Row: "1",
     Data: [
       { alphabet: "A", textToSpeechMsg: "A for Apple" },
-      { alphabet: "B", textToSpeechMsg: "B for Ballistic" },
+      { alphabet: "B", textToSpeechMsg: "B for Ball" },
       { alphabet: "C", textToSpeechMsg: "C for Cat" },
-      { alphabet: "D", textToSpeechMsg: "D for Damon" },
+      { alphabet: "D", textToSpeechMsg: "D for Dog" },
     ],
   },
 
@@ -29,19 +29,19 @@ const dataArr = [
     Row: "3",
     Data: [
       { alphabet: "I", textToSpeechMsg: "I for IceCream" },
-      { alphabet: "J", textToSpeechMsg: "J for Jason Momoa" },
-      { alphabet: "K", textToSpeechMsg: "K for King" },
-      { alphabet: "L", textToSpeechMsg: "L for Lasun" },
+      { alphabet: "J", textToSpeechMsg: "J for Jocker" },
+      { alphabet: "K", textToSpeechMsg: "K for Kite" },
+      { alphabet: "L", textToSpeechMsg: "L for Lion" },
     ],
   },
 
   {
     Row: "4",
     Data: [
-      { alphabet: "M", textToSpeechMsg: "M for Momo" },
-      { alphabet: "N", textToSpeechMsg: "N for Nokia" },
-      { alphabet: "O", textToSpeechMsg: "O for Oscar" },
-      { alphabet: "P", textToSpeechMsg: "P for Paad" },
+      { alphabet: "M", textToSpeechMsg: "M for Mango" },
+      { alphabet: "N", textToSpeechMsg: "N for Nest" },
+      { alphabet: "O", textToSpeechMsg: "O for Orange" },
+      { alphabet: "P", textToSpeechMsg: "P for Parrot" },
     ],
   },
 
@@ -49,25 +49,25 @@ const dataArr = [
     Row: "4",
     Data: [
       { alphabet: "Q", textToSpeechMsg: "Q for queen" },
-      { alphabet: "R", textToSpeechMsg: "R for ram" },
-      { alphabet: "S", textToSpeechMsg: "S for sonya" },
-      { alphabet: "T", textToSpeechMsg: "T for tom" },
+      { alphabet: "R", textToSpeechMsg: "R for rabbit" },
+      { alphabet: "S", textToSpeechMsg: "S for sparrow" },
+      { alphabet: "T", textToSpeechMsg: "T for tomato" },
     ],
   },
   {
     Row: "4",
     Data: [
-      { alphabet: "U", textToSpeechMsg: "M for Momo" },
-      { alphabet: "V", textToSpeechMsg: "N for Nokia" },
-      { alphabet: "W", textToSpeechMsg: "O for Oscar" },
-      { alphabet: "x", textToSpeechMsg: "P for Paad" },
+      { alphabet: "U", textToSpeechMsg: "u for umbrella" },
+      { alphabet: "V", textToSpeechMsg: "v for violin" },
+      { alphabet: "W", textToSpeechMsg: "w for watch" },
+      { alphabet: "x", textToSpeechMsg: "x for x-mas tree" },
     ],
   },
   {
     Row: "4",
     Data: [
-      { alphabet: "Y", textToSpeechMsg: "M for Momo" },
-      { alphabet: "Z", textToSpeechMsg: "N for Nokia" },
+      { alphabet: "Y", textToSpeechMsg: "y for ysk" },
+      { alphabet: "Z", textToSpeechMsg: "z for zebra" },
     ],
   },
 ];
@@ -132,6 +132,10 @@ const AlphabetButton = ({ alphabet, textToSpeechMsg }) => {
 };
 
 const style = StyleSheet.create({
+  parentView:{
+    flex:1,
+    flexDirection:'row',
+    },
   text: {
     textAlign: "center",
     margin: 10,

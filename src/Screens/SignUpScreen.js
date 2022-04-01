@@ -9,32 +9,56 @@ import {
   TouchableOpacity,
 } from "react-native";
 import { Component } from "react";
-import { Alert } from "react-native";
+import axios from "../config/axios";
+import { SafeAreaView } from "react-native-safe-area-context";
+
 class SignUpScreen extends Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      username: "sonya@gmail.com",
-      password: "sonyayadav",
+      name:" ",
+      username: " ",
+      password: " ",
+      phone:" "
     };
   }
-  navi(){
+
+  navigation=this.props.navigation;
+
+  navi() {
     const { navigation } = this.props;
-    navigation.navigate("login")
+    navigation.navigate("login");
   }
 
+  callLogin = async () => {
+    console.log("------Function was Called--------");
+    try {
+      const loggedInData = await axios.post("http://192.168.29.51:5000/signup", {
+        name: this.state.name,
+        email: this.state.username,
+        password: this.state.password,
+        phone: this.state.phone,
+      });
+      if (loggedInData.data) {
+        this.navigation.navigate("login");
+      }
+    } catch (err) {
+      console.log("Err :", err.message);
+    }
+  };
+
   _handlePress() {
-    const { navigation } = this.props;
+    console.log("..............working--------");
     let reg = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w\w+)+$/;
     if (reg.test(this.state.username) && this.state.password.length > 8) {
-      navigation.navigate("login");
-    } else {
-      Alert.alert("please enter valid email & password");
+      // navigation.navigate("login");
+      this.callLogin();
     }
   }
   render() {
     return (
+      <SafeAreaView style={style.parentView}>
       <View style={style.container}>
         <Image
           style={style.image}
@@ -47,7 +71,7 @@ class SignUpScreen extends Component {
             fontSize: 30,
             marginTop: 40,
             marginBottom: 20,
-            color:"white"
+            color: "white",
           }}
         >
           Signup
@@ -57,7 +81,7 @@ class SignUpScreen extends Component {
             style={style.TextInput}
             placeholder="Name"
             placeholderTextColor="#003f5c"
-            onChangeText={(text) => this.setState({ username: text })}
+            onChangeText={(text) => this.setState({ name: text })}
           />
         </View>
         <View style={style.inputView}>
@@ -83,7 +107,7 @@ class SignUpScreen extends Component {
             placeholder="Phone"
             placeholderTextColor="#003f5c"
             secureTextEntry={true}
-            onChangeText={(text) => this.setState({ password: text })}
+            onChangeText={(text) => this.setState({ phone: text })}
           />
         </View>
         <TouchableOpacity
@@ -92,17 +116,21 @@ class SignUpScreen extends Component {
         >
           <Text style={style.loginText}>Register</Text>
         </TouchableOpacity>
-        <TouchableOpacity
-        onPress={()=>this.navi()}>
+        <TouchableOpacity onPress={() => this.navi()}>
           <Text style={style.s_button}>Already have an account?</Text>
         </TouchableOpacity>
       </View>
+      </SafeAreaView>
     );
   }
 }
 
 export default SignUpScreen;
 const style = StyleSheet.create({
+  parentView:{
+    flex:1,
+    flexDirection:'row',
+    },
   container: {
     flex: 1,
     backgroundColor: "#1D263F",
@@ -140,11 +168,11 @@ const style = StyleSheet.create({
     alignSelf: "center",
     marginTop: 30,
   },
-  s_button:{
+  s_button: {
     height: 35,
     marginBottom: 30,
     margin: 20,
-    color:"white",
-    alignSelf:"center"
-  }
+    color: "white",
+    alignSelf: "center",
+  },
 });

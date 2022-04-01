@@ -7,34 +7,61 @@ import {
   Image,
   TextInput,
   TouchableOpacity,
+  Dimensions
 } from "react-native";
 import { Component } from "react";
-import { Alert } from "react-native";
+
+import axios from "../config/axios";
+import { SafeAreaView } from "react-native-safe-area-context";
+
 class LoginScreen extends Component {
+  
   constructor(props) {
     super(props);
 
     this.state = {
-      username: "sonya@gmail.com",
-      password: "sonyayadav",
+      username: " ",
+      password: " ",
     };
   }
-  navi(){
-    const { navigation } = this.props;
-    navigation.navigate("signup")
+  navigation=this.props.navigation;
+
+  navi() {
+    this.navigation.navigate("signup");
+  }
+
+  callLogin =async()=>{
+    console.log("------Function was Called--------");
+   try{
+    const loggedInData= await axios.post("http://192.168.29.51:5000/login", {
+      email: this.state.username,
+      password: this.state.password,
+    })
+    if(loggedInData.data.success){
+      console.log(loggedInData.data.success)
+      this.navigation.navigate("MainInstruction")
+    }
+    else{
+      console.log("-------incorrect---------")
+    }
+     }
+   catch(err){
+     console.log("Err :",err.message)
+   }
   }
 
   _handlePress() {
-    const { navigation } = this.props;
+    console.log("------Working------");
     let reg = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w\w+)+$/;
-    if (reg.test(this.state.username) && this.state.password.length > 8) {
-      navigation.navigate("MainInstruction");
-    } else {
-      Alert.alert("please enter valid email & password");
+    if (reg.test(this.state.username) && this.state.password.length > 4) {
+      // navigation.navigate("MainInstruction");
+      this.callLogin();
     }
   }
+
   render() {
     return (
+      <SafeAreaView style={style.parentView}>
       <View style={style.container}>
         <Image
           style={style.image}
@@ -47,7 +74,7 @@ class LoginScreen extends Component {
             fontSize: 30,
             marginTop: 40,
             marginBottom: 20,
-            color:"white"
+            color: "white",
           }}
         >
           Login
@@ -79,17 +106,21 @@ class LoginScreen extends Component {
         >
           <Text style={style.loginText}>LOGIN</Text>
         </TouchableOpacity>
-        <TouchableOpacity
-        onPress={()=>this.navi()}>
+        <TouchableOpacity onPress={() => this.navi()}>
           <Text style={style.s_button}>Signup</Text>
         </TouchableOpacity>
       </View>
+      </SafeAreaView>
     );
   }
 }
 
 export default LoginScreen;
 const style = StyleSheet.create({
+  parentView:{
+  flex:1,
+  flexDirection:'row',
+  },
   container: {
     flex: 1,
     backgroundColor: "#1D263F",
@@ -116,7 +147,7 @@ const style = StyleSheet.create({
     height: 30,
     marginBottom: 30,
     margin: 20,
-    color:"white"
+    color: "white",
   },
   loginBtn: {
     width: "40%",
@@ -127,11 +158,11 @@ const style = StyleSheet.create({
     backgroundColor: "#d9d9d9",
     alignSelf: "center",
   },
-  s_button:{
+  s_button: {
     height: 35,
     marginBottom: 30,
     margin: 20,
-    color:"white",
-    alignSelf:"center"
-  }
+    color: "white",
+    alignSelf: "center",
+  },
 });

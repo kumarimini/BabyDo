@@ -77,13 +77,16 @@ const ViewStyle = {
 };
 export default function MainInstructionScreen({ navigation }) {
   return (
+    
     <SafeAreaView
       style={{
         flex: 1,
-        margin: 5,
         backgroundColor: "#1D263F",
+        flexDirection:'column',
+        marginTop:30
       }}
     >
+    <SafeAreaView>
       <Text
         style={{
           backgroundColor: "grey",
@@ -97,6 +100,7 @@ export default function MainInstructionScreen({ navigation }) {
       >
         BABYDO
       </Text>
+      </SafeAreaView>
       {dataArr.map((elem) => (
         <View style={ViewStyle}>
           {elem.Data.map((item) => (

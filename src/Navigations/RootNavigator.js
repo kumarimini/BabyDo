@@ -13,6 +13,8 @@ import FruitScreen from "../Screens/FruitScreen";
 import TextSaveScreen from "../Screens/TextSaveScreen";
 import VegetablesScreen from "../Screens/VegetablesScreen";
 import BirdsScreen from "../Screens/BirdsScreen";
+import Apple from "../ScrennImg/Apple";
+import Ball from "../ScrennImg/Ball";
 
 const Stack = createNativeStackNavigator();
 
@@ -32,6 +34,8 @@ const RootNavigator = () => {
         <Stack.Screen name="Vegetables" component={VegetablesScreen} />
         <Stack.Screen name="TextSave" component={TextSaveScreen}/> 
         <Stack.Screen name="Bird" component={BirdsScreen}/> 
+        <Stack.Screen name="Apple" component={Apple}/> 
+        <Stack.Screen name="Ball" component={Ball}/> 
       </Stack.Navigator>
     </NavigationContainer>
   );

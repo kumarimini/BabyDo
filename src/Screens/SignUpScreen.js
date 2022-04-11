@@ -51,14 +51,13 @@ class SignUpScreen extends Component {
   _handlePress() {
     console.log("..............working--------");
     let reg = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w\w+)+$/;
-    if (reg.test(this.state.username) && this.state.password.length > 8) {
+    if (reg.test(this.state.username) && this.state.password.length > 4) {
       // navigation.navigate("login");
       this.callLogin();
     }
   }
   render() {
     return (
-      <SafeAreaView style={style.parentView}>
       <View style={style.container}>
         <Image
           style={style.image}
@@ -105,6 +104,7 @@ class SignUpScreen extends Component {
           <TextInput
             style={style.TextInput}
             placeholder="Phone"
+            keyboardType="numeric"
             placeholderTextColor="#003f5c"
             secureTextEntry={true}
             onChangeText={(text) => this.setState({ phone: text })}
@@ -120,20 +120,16 @@ class SignUpScreen extends Component {
           <Text style={style.s_button}>Already have an account?</Text>
         </TouchableOpacity>
       </View>
-      </SafeAreaView>
     );
   }
 }
 
 export default SignUpScreen;
 const style = StyleSheet.create({
-  parentView:{
-    flex:1,
-    flexDirection:'row',
-    },
   container: {
     flex: 1,
     backgroundColor: "#1D263F",
+    marginTop:30
   },
   image: {
     marginTop: 50,

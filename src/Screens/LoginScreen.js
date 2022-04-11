@@ -7,61 +7,64 @@ import {
   Image,
   TextInput,
   TouchableOpacity,
-  Dimensions
+  Dimensions,
 } from "react-native";
 import { Component } from "react";
 
 import axios from "../config/axios";
 import { SafeAreaView } from "react-native-safe-area-context";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 
 class LoginScreen extends Component {
-  
   constructor(props) {
     super(props);
 
     this.state = {
-      username: "sonya@gmail.com ",
-      password: "sonya ",
+      username: " ",
+      password: " ",
     };
   }
-  navigation=this.props.navigation;
+  navigation = this.props.navigation;
 
   navi() {
     this.navigation.navigate("signup");
   }
 
-  callLogin =async()=>{
+  callLogin = async () => {
     console.log("------Function was Called--------");
-   try{
-    const loggedInData= await axios.post("http://192.168.29.51:5000/login", {
-      email: this.state.username,
-      password: this.state.password,
-    })
-    if(loggedInData.data.success){
-      console.log(loggedInData.data.success)
-      this.navigation.navigate("MainInstruction")
+    try {
+      const loggedInData = await axios.post("http://192.168.29.51:5000/login", {
+        email: this.state.username,
+        password: this.state.password,
+      });
+      console.log(loggedInData.data)
+      if (loggedInData.data.authToken) {
+        // this.navigation.navigate("MainInstruction");
+        try {
+          await AsyncStorage.setItem("Token", loggedInData.data.authToken);
+        } catch (err) {
+          console.log("error is : ", err.message);
+        }
+        // console.log(Token);
+      } else {
+        console.log("-------incorrect---------");
+      }
+    } catch (err) {
+      console.log("Err :", err.message);
     }
-    else{
-      console.log("-------incorrect---------")
-    }
-     }
-   catch(err){
-     console.log("Err :",err.message)
-   }
-  }
+    
+  };
 
   _handlePress() {
     console.log("------Working------");
     let reg = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w\w+)+$/;
     if (reg.test(this.state.username) && this.state.password.length > 4) {
-      // navigation.navigate("MainInstruction");
       this.callLogin();
     }
   }
 
   render() {
     return (
-      <SafeAreaView style={style.parentView}>
       <View style={style.container}>
         <Image
           style={style.image}
@@ -110,19 +113,15 @@ class LoginScreen extends Component {
           <Text style={style.s_button}>Signup</Text>
         </TouchableOpacity>
       </View>
-      </SafeAreaView>
     );
   }
 }
 
 export default LoginScreen;
 const style = StyleSheet.create({
-  parentView:{
-  flex:1,
-  flexDirection:'row',
-  },
   container: {
     flex: 1,
+    marginTop: 30,
     backgroundColor: "#1D263F",
   },
   image: {
